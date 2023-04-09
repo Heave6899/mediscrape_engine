@@ -1,6 +1,7 @@
 # Single Symptom Search Result Evaluation
 
 | Symptom Query | Related of top k | Precision |
+| :---        |    :----:   |          ---: |
 | Malaise | | |
 | Exhaustion | | |
 | Dizziness | | |
@@ -22,6 +23,7 @@
 # Natural Language Text Search Result Evaluation
 
 | Document Name | Related of top k | Precision |
+| :---        |    :----:   |          ---: |
 | 1.json | | |
 | 2.json | | |
 | 3.json | | |
