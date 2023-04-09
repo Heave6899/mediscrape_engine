@@ -1,0 +1,64 @@
+ * Serving Flask app 'server_flask'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5050
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 844-082-252
+127.0.0.1 - - [08/Apr/2023 18:34:29] "GET /auto_complete?q=vomiting%20sensation HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:34:43] "GET /auto_complete?q=vomiting%20sensation,%20nausea HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:34:44] "OPTIONS /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:34:49] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:34:49] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:39:11] "OPTIONS /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:39:14] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:39:38] "GET /auto_complete?q=vomiting%20sensation HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:39:48] "OPTIONS /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:39:53] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:39:53] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:41:00] "GET /auto_complete?q=vomiting%20sensation HTTP/1.1" 200 -
+ * Detected change in '/home/parallels/Desktop/mediscrape/server/server_flask.py', reloading
+r {'symptoms': ['Vomiting']}
+{'symptoms': ['Vomiting']}
+r {'symptoms': ['Nausea', 'Vomiting']}
+{'symptoms': ['Nausea', 'Vomiting']}
+query vomiting sensation
+page 0
+query vomiting sensation
+page 0
+r {'symptoms': ['Vomiting']}
+{'symptoms': ['Vomiting']}
+r {'symptoms': ['Vomiting']}
+{'symptoms': ['Vomiting']}
+query vomiting sensation
+page 0
+r {'symptoms': ['Vomiting']}
+{'symptoms': ['Vomiting']}
+r {'symptoms': ['Vomiting']}
+{'symptoms': ['Vomiting']}
+query vomiting sensation
+page 0
+query vomiting sensation
+page 0
+r {'symptoms': ['Vomiting']}
+{'symptoms': ['Vomiting']}
+r {'symptoms': ['Vomiting']}
+{'symptoms': ['Vomiting']}
+r {'symptoms': ['Vomiting']}
+{'symptoms': ['Vomiting']}
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 844-082-252
+ * Detected change in '/home/parallels/Desktop/mediscrape/server/utils.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 844-082-252
+ * Serving Flask app 'server_flask'
+ * Debug mode: on
+Address already in use
+Port 5050 is in use by another program. Either identify and stop that program, or start the server with a different port.
+127.0.0.1 - - [08/Apr/2023 18:48:15] "GET /auto_complete?q=vomiting%20sensation HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:48:19] "OPTIONS /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:48:24] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2023 18:48:24] "POST /search_query HTTP/1.1" 200 -

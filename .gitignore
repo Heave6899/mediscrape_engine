@@ -1,0 +1,4 @@
+venv/*
+server/merged_data.json
+public_mm/*
+solr-9.2.0/*
