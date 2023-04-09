@@ -28,9 +28,10 @@ class AutocompleteWrapper(object):
         # need to get output of diseases and symtoms whatever is detected from the sympgraph code
         # call your function take 10 symptoms, diseases
         if 'symptoms' in json:
-            json['syos'] = self.utils.ranker(10, ','.join(json['symptoms']))
-            json['disea'] = self.utils.disease_finder(
-                10, ','.join(json['symptoms']))
+            outsyos = self.utils.ranker(10,','.join(json['symptoms']))
+            outdisea = self.utils.disease_finder(10, ','.join(json['symptoms']))
+            json['syos'] = outsyos if type(outsyos) is list else []
+            json['disea'] = outdisea if type(outdisea) is list else []
         else:
             outsyos = self.utils.ranker(10, json['text'])
             outdisea = self.utils.disease_finder(10, json['text'])

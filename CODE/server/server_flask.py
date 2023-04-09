@@ -30,7 +30,7 @@ def annotate_extract_relate(q):
     Returns:
         dict: A dictionary containing disease-related information extracted from the text.
     """
-    text_to_annotate = clean(q.replace('"', '').replace(',', " and "),clean_all=False,stemming=False,stopwords=False,extra_spaces=True,punct=False)
+    text_to_annotate = clean(q.replace('"', '').replace(',', " and "),clean_all=True,stemming=False,stopwords=True,extra_spaces=True,punct=False)
     extracted_data = mmw.online_annotate(text_to_annotate)
 
     response_json = {'text':text_to_annotate}
@@ -54,7 +54,8 @@ def search_query():
         dict: A dictionary containing the search results and disease-related information extracted from the query.
     """
     if request.method == 'POST':
-        domain_url = "http://localhost:8983/solr/medical_docs2/query?q={}&q.op=AND&indent=true&start={}&rows={}&sort=post_like_count%20desc,%20post_follow_count%20desc,%20post_reply_count%20desc"
+        main_query = "http://localhost:8983/solr/medical_docs2/query?q={}&q.op=AND&indent=true&start={}&rows={}&sort=post_like_count%20desc,%20post_follow_count%20desc,%20post_reply_count%20desc"
+        sec_query = "http://localhost:8983/solr/medical_docs2/query?q={}&q.op=OR&indent=true&start={}&rows={}"
         query = request.json['query']
         print("query", query)
         page = int(request.json.get('page'))-1 if request.json['page'] else 0
@@ -63,13 +64,21 @@ def search_query():
         page_count = 10
         start_row = str(page*page_count)
         print('page', start_row)
-        body = requests.get(domain_url.format(
+        body = requests.get(main_query.format(
             uparser.quote(query), start_row, page_count)).content
         resp = annotate_extract_relate(query)
         docs = json.loads(body)['response']['docs']
-        for i in docs:
-            i['post_content'][0] = clean(i['post_content'][0],clean_all=False,stemming=False,stopwords=False,extra_spaces=True,punct=False)
-            i['post_title'][0] = clean(i['post_title'][0],clean_all=False,stemming=False,stopwords=False,extra_spaces=True,punct=False)
+        if len(docs):
+            for i in docs:
+                i['post_content'][0] = clean(i['post_content'][0],clean_all=False,stemming=False,stopwords=True,extra_spaces=True,punct=False)
+                i['post_title'][0] = clean(i['post_title'][0],clean_all=False,stemming=False,stopwords=True,extra_spaces=True,punct=False)
+        else:
+            body = requests.get(sec_query.format(
+            uparser.quote(query), start_row, page_count)).content
+            docs = json.loads(body)['response']['docs']
+            for i in docs:
+                i['post_content'][0] = clean(i['post_content'][0],clean_all=False,stemming=False,stopwords=True,extra_spaces=True,punct=False)
+                i['post_title'][0] = clean(i['post_title'][0],clean_all=False,stemming=False,stopwords=True,extra_spaces=True,punct=False)
         return {'data': docs, 'disea': resp['disea'], 'syos': resp['syos']}
     else:
         return {'data': 'invalid query, use POST'}
