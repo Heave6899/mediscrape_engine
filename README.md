@@ -1,9 +1,9 @@
 This is a search engine that has been optimized to search various blog posts like WebMD and Patient.Info, filter posts based on symptoms and diseases, and suggest related symtoms the user can possibly have.
 
 Created by:
-Vansh Patel
-Bhargav Saravia
-Charles Kuo (Chia-Cheng Kuo)
+Vansh Patel,
+Bhargav Saravia,
+Charles Kuo (Chia-Cheng Kuo),
 Akash Arasu
 
 Created for:
