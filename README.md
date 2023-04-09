@@ -26,3 +26,6 @@ Steps to run the engine
 11. cd into processing or wherever the merged_data.json file has been generated, and execute the following command: `curl 'http://localhost:8983/solr/medical_docs/update?commit=true' --data-binary @merged_data.json -H 'Content-type:application/json'`. This will take a few minutes and upload all the documents to solr core.
 12. cd into the server directory and run server_flask.py in nohup mode if required for background processing. `nohup python server_flask.py &`. If all steps executed and you reached this step, the complete backend works
 13. Install apache2 if not present, and host the webapp/build files locally to run the frontend. You can manually compile and run the frontend too. Install node modules if needed.
+
+Screenshot of Frontend with Sample Query:
+![Frontend with a sample query output]("/CODE/webapp/images/Screenshot from 2023-04-09 15-36-04.png")
