@@ -32,6 +32,8 @@ class AutocompleteWrapper(object):
             json['disea'] = self.utils.disease_finder(
                 10, ','.join(json['symptoms']))
         else:
-            json['syos'] = []
-            json['disea'] = []
+            outsyos = self.utils.ranker(10, json['text'])
+            outdisea = self.utils.disease_finder(10, json['text'])
+            json['syos'] = outsyos if type(outsyos) is list else []
+            json['disea'] = outdisea if type(outdisea) is list else []
         return json

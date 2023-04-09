@@ -30,10 +30,10 @@ def annotate_extract_relate(q):
     Returns:
         dict: A dictionary containing disease-related information extracted from the text.
     """
-    text_to_annotate = clean(q.replace('"', '').replace(',', " and "))
+    text_to_annotate = clean(q.replace('"', '').replace(',', " and "),clean_all=False,stemming=False,stopwords=False,extra_spaces=True,punct=False)
     extracted_data = mmw.online_annotate(text_to_annotate)
 
-    response_json = {}
+    response_json = {'text':text_to_annotate}
     if 'symptoms' in extracted_data:
         response_json['symptoms'] = extracted_data['symptoms']
     if 'diseases' in extracted_data:
@@ -68,8 +68,8 @@ def search_query():
         resp = annotate_extract_relate(query)
         docs = json.loads(body)['response']['docs']
         for i in docs:
-            i['post_content'][0] = clean(i['post_content'][0])
-            i['post_title'][0] = clean(i['post_title'][0])
+            i['post_content'][0] = clean(i['post_content'][0],clean_all=False,stemming=False,stopwords=False,extra_spaces=True,punct=False)
+            i['post_title'][0] = clean(i['post_title'][0],clean_all=False,stemming=False,stopwords=False,extra_spaces=True,punct=False)
         return {'data': docs, 'disea': resp['disea'], 'syos': resp['syos']}
     else:
         return {'data': 'invalid query, use POST'}
