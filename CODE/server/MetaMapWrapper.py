@@ -1,6 +1,8 @@
 from pymetamap import MetaMap
 import skr_web_api as sk
-
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 class MetaMapWrapper(object):
     """
@@ -13,8 +15,8 @@ class MetaMapWrapper(object):
         """
         Initializes a new instance of the MetaMapWrapper class.
         """
-        self.key = 'api-key'  # API key
-        self.email = 'xyz@abc'  # email associated with the API key
+        self.key = os.getenv('API_KEY') # API key
+        self.email = os.getenv('API_EMAIL')   # email associated with the API key
         # API submission object
         self.subm = sk.Submission(self.email, self.key)
 

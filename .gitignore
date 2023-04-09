@@ -2,3 +2,5 @@ venv/*
 CODE/server/merged_data.json
 CODE/public_mm/*
 CODE/solr-9.2.0/*
+CODE/server/.env
+CODE/server/nohup.out
