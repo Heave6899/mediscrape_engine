@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-files = ["./merged_data.json"]
+files = ["../processing/merged_data.json"]
 
 l = []
 for file in files:

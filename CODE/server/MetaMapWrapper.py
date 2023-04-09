@@ -3,8 +3,8 @@ import skr_web_api as sk
 class MetaMapWrapper(object):
     mm = MetaMap.get_instance('/home/parallels/Desktop/mediscrape/public_mm/bin/metamap20')
     def __init__(self):
-        self.key = '40d89954-8969-4fe1-8687-a463ab0a261f'
-        self.email = 'vpatel44@asu.edu'
+        self.key = 'api-key'
+        self.email = 'xyz@abc'
         self.subm = sk.Submission(self.email,self.key)
         pass
 
