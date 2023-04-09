@@ -28,4 +28,4 @@ Steps to run the engine
 13. Install apache2 if not present, and host the webapp/build files locally to run the frontend. You can manually compile and run the frontend too. Install node modules if needed.
 
 Screenshot of Frontend with Sample Query:
-![Frontend with a sample query output]("/CODE/webapp/images/Screenshot from 2023-04-09 15-36-04.png")
+![Frontend with a sample query output](/CODE/webapp/images/3.png)
