@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/skr_web_api/__init__.py
+src/skr_web_api/casauth.py
+src/skr_web_api.egg-info/PKG-INFO
+src/skr_web_api.egg-info/SOURCES.txt
+src/skr_web_api.egg-info/dependency_links.txt
+src/skr_web_api.egg-info/top_level.txt
