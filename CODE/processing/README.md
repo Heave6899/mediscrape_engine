@@ -1,3 +1,3 @@
-1. Use process_mm.py for processing and extracting ontologies from blog posts. The output files are name output1.json, output2.json and so on.
+1. Use process_mm.py for processing and extracting ontologies from blog posts. The output files are name output1.json, output2.json and so on. Please copy the MetaMapWrapper.py file from server directory into this folder to prevent errors like `No module found`.
 2. Use uniqueposts.py for seperating out unique blog posts if some blog posts repeat. 
 3. Use combinsplitjson.py for combining the unique post jsons into a single merged data json. This is the final data file we will use to upload on the Solr Engine. This file will be large.

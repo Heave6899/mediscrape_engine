@@ -6,9 +6,10 @@ import json
 from cleantext import clean
 import math
 
-def do_stuff(q, outfile):
+
+def threaded_process(q, outfile):
     while q is not None:
-        for i,data in enumerate(q):
+        for i, data in enumerate(q):
             try:
                 # data = q.get()
                 preprocessed_post = {}
@@ -54,8 +55,6 @@ def do_stuff(q, outfile):
                 print("Exception while indexing this forum post: " + str(data))
                 print('Exception message: ' + str(e))
 
-        
-
 
 num_threads = 4
 q = []
@@ -63,10 +62,10 @@ mmw = MetaMapWrapper()
 
 json_urls = defaultdict(bool)
 
-with open('patient_info_forum_posts_content.json','r') as f:
+with open('patient_info_forum_posts_content.json', 'r') as f:
     data = json.load(f)
 
-        
+
 split_length = math.floor(len(data)/num_threads)
 
 
@@ -76,14 +75,7 @@ q.append(data[75126:112689])
 q.append(data[112689:])
 
 for i in range(num_threads):
-    worker = Thread(target=do_stuff, args=(q[i],"outfile{}.json".format(i),))
+    worker = Thread(target=threaded_process, args=(
+        q[i], "outfile{}.json".format(i),))
     worker.daemon = False
     worker.start()
-
-
-
-
-
-
-    # q[i].join()
-    # print("Batch " + str(i) + " Done")

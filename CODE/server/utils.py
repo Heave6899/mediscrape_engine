@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class Utils:
     """
     A class that provides utility functions for working with disease-symptom data.
@@ -13,8 +14,9 @@ class Utils:
         query_table (numpy.ndarray): An array of unique symptom names that can be used to filter the DataFrame.
 
     """
-    def __init__(self, path = "./sympgraph.csv"):
-        self.df = pd.read_csv(path, encoding = "latin-1")
+
+    def __init__(self, path="./sympgraph.csv"):
+        self.df = pd.read_csv(path, encoding="latin-1")
         self.query_table = self.df["Source"].values
 
     def ranker(self, top, query):
@@ -39,13 +41,13 @@ class Utils:
             filter_df = self.df[self.df["Source"] == query[0]]
         else:
             return "Empty Query -- Try again"
-        
+
         filter_df = filter_df[~filter_df["Target"].isin(query)]
-        filter_df = filter_df.sort_values("Weight", ascending = False)
-        filter_df.drop_duplicates(subset = ["Target"], inplace = True)
-        
+        filter_df = filter_df.sort_values("Weight", ascending=False)
+        filter_df.drop_duplicates(subset=["Target"], inplace=True)
+
         return filter_df["Target"][:top].to_list()
-    
+
     def disease_finder(self, top, query):
         """
         A function that returns the top 'n' diseases that match the given symptoms.

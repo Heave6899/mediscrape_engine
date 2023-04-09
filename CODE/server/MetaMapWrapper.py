@@ -1,18 +1,22 @@
 from pymetamap import MetaMap
 import skr_web_api as sk
+
+
 class MetaMapWrapper(object):
     """
     A class for wrapping the MetaMap API for extracting medical concepts from text.
     """
-    mm = MetaMap.get_instance('/home/parallels/Desktop/mediscrape/public_mm/bin/metamap20')
+    mm = MetaMap.get_instance(
+        '/home/parallels/Desktop/mediscrape/public_mm/bin/metamap20')
 
     def __init__(self):
         """
         Initializes a new instance of the MetaMapWrapper class.
         """
-				self.key = 'api-key' # API key
-        self.email = 'xyz@abc' # email associated with the API key
-        self.subm = sk.Submission(self.email, self.key)  # API submission object
+        self.key = 'api-key'  # API key
+        self.email = 'xyz@abc'  # email associated with the API key
+        # API submission object
+        self.subm = sk.Submission(self.email, self.key)
 
     def online_annotate(self, text):
         """
@@ -24,13 +28,15 @@ class MetaMapWrapper(object):
         Returns:
             A dictionary containing the extracted medical concepts.
         """
-        self.subm.init_mm_interactive(text)  # initialize the MetaMap API submission
+        self.subm.init_mm_interactive(
+            text)  # initialize the MetaMap API submission
         response = self.subm.submit()  # submit the request to the API
         extracted_data = {}
         symptoms = []
         diseases = []
         diagnostics = []
-        decoded_body = [i.split('|') for i in response.content.decode().split('\n')]
+        decoded_body = [i.split('|')
+                        for i in response.content.decode().split('\n')]
         for concept in decoded_body:
             if len(concept) > 6:
                 if concept[5] == '[sosy]':
@@ -52,7 +58,6 @@ class MetaMapWrapper(object):
             extracted_data['diagnostics'] = diagnostics
 
         return extracted_data
-
 
     def annotate(self, text):
         """
