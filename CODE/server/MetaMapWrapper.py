@@ -1,6 +1,5 @@
 from pymetamap import MetaMap
 import skr_web_api as sk
-
 class MetaMapWrapper(object):
     """
     A class for wrapping the MetaMap API for extracting medical concepts from text.
@@ -11,8 +10,8 @@ class MetaMapWrapper(object):
         """
         Initializes a new instance of the MetaMapWrapper class.
         """
-        self.key = '40d89954-8969-4fe1-8687-a463ab0a261f'  # API key
-        self.email = 'vpatel44@asu.edu'  # email associated with the API key
+				self.key = 'api-key' # API key
+        self.email = 'xyz@abc' # email associated with the API key
         self.subm = sk.Submission(self.email, self.key)  # API submission object
 
     def online_annotate(self, text):
@@ -73,6 +72,7 @@ class MetaMapWrapper(object):
         diagnostics = []
         for concept in concepts:
             if hasattr(concept, 'semtypes'):
+                # print(concept)
                 if concept.semtypes == '[sosy]':
                     # Sign or Symptom
                     # sometimes it returns symptoms as a symptom
@@ -84,12 +84,10 @@ class MetaMapWrapper(object):
                 elif concept.semtypes == '[diap]':
                     # Diagnostic Procedure
                     diagnostics.append(concept.preferred_name)
-
         if len(symptoms):
             extracted_data['symptoms'] = symptoms
         if len(diseases):
             extracted_data['diseases'] = diseases
         if len(diagnostics):
             extracted_data['diagnostics'] = diagnostics
-
         return extracted_data

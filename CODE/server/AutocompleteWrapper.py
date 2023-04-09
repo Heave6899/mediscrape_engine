@@ -1,5 +1,4 @@
 from utils import Utils
-
 class AutocompleteWrapper(object):
     """
     A class that wraps the disease-symptom utility functions provided by the Utils class.
