@@ -1,4 +1,4 @@
-Crawling status: crawled 236490 unique forum posts.
+Crawling status: crawled 156400 unique forum posts.
 
 Steps to run patient.info forum crawler(Scrapy based - Python):
 
