@@ -244,3 +244,51 @@ cleantext.exceptions.CleanTextEmptyString: No text is provided to clean
 127.0.0.1 - - [09/Apr/2023 15:37:33] "POST /search_query HTTP/1.1" 200 -
 127.0.0.1 - - [09/Apr/2023 15:37:40] "OPTIONS /search_query HTTP/1.1" 200 -
 127.0.0.1 - - [09/Apr/2023 15:37:43] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:31:49] "OPTIONS /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:31:49] "[35m[1mPOST /search_query HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/flask/app.py", line 2551, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/flask/app.py", line 2531, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/parallels/Desktop/mediscrape/CODE/server/server_flask.py", line 69, in search_query
+    resp = annotate_extract_relate(query)
+  File "/home/parallels/Desktop/mediscrape/CODE/server/server_flask.py", line 33, in annotate_extract_relate
+    text_to_annotate = clean(q.replace('"', '').replace(',', " and "),clean_all=True,stemming=False,stopwords=True,extra_spaces=True,punct=False)
+  File "/home/parallels/Desktop/mediscrape/venv/lib/python3.10/site-packages/cleantext/cleantext.py", line 51, in clean
+    raise CleanTextEmptyString("No text is provided to clean")
+cleantext.exceptions.CleanTextEmptyString: No text is provided to clean
+127.0.0.1 - - [09/Apr/2023 16:31:52] "GET /auto_complete?q=Malaise HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:33:55] "GET /auto_complete?q=Malaise HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:34:00] "OPTIONS /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:34:04] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:34:04] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:34:40] "GET /auto_complete?q=Malaise HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:34:42] "OPTIONS /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:34:46] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:34:46] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:35:06] "OPTIONS /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:35:09] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:35:14] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:37:27] "GET /auto_complete?q=Malaise HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:38:03] "GET /auto_complete?q=Malaise HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:38:10] "OPTIONS /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:38:10] "OPTIONS /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:38:14] "POST /search_query HTTP/1.1" 200 -
+127.0.0.1 - - [09/Apr/2023 16:38:15] "POST /search_query HTTP/1.1" 200 -
