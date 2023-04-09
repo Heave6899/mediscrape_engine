@@ -9,6 +9,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+# Enable CORS on all routes
 cors = CORS(app, resource={
     r"/*":{
         "origins":"*"
@@ -19,6 +20,15 @@ mmw = MetaMapWrapper()
 acw = AutocompleteWrapper()
 
 def annotate_extract_relate(q):
+    """
+    Annotate and extract disease-related information from a given text.
+
+    Args:
+        q (str): Text to be annotated.
+
+    Returns:
+        dict: A dictionary containing disease-related information extracted from the text.
+    """
     text_to_annotate = clean(q.replace('"','').replace(','," and "))
     extracted_data = mmw.online_annotate(text_to_annotate)
     
@@ -35,6 +45,12 @@ def annotate_extract_relate(q):
 
 @app.route('/search_query',methods = ['POST'])
 def search_query():
+    """
+    Search the Solr index for a given query and return the extracted disease-related information.
+
+    Returns:
+        dict: A dictionary containing the search results and disease-related information extracted from the query.
+    """
     if request.method == 'POST':
         domain_url = "http://localhost:8983/solr/medical_docs2/query?q={}&q.op=AND&indent=true&start={}&rows={}&sort=post_like_count%20desc,%20post_follow_count%20desc,%20post_reply_count%20desc"
         query = request.json['query']
@@ -57,9 +73,14 @@ def search_query():
 
 @app.route('/auto_complete',methods = ['GET'])
 def flask_api():
+    """
+    Extract disease-related information from a given text.
+
+    Returns:
+        dict: A dictionary containing the disease-related information extracted from the text.
+    """
     response = annotate_extract_relate(request.args.get('q'))
     return response
 
 if __name__=="__main__":
     app.run(port=5050,debug=True)
-    
