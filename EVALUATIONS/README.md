@@ -32,6 +32,6 @@
 | 6.json |80% |90% |
 | 7.json |40% |100% |
 
-(3.json only return 1 mayo clinic post)
+(3.json only return 1 mayo clinic post)<br>
 Related of top k: how many of the 10 returned output, it's main topic is relevant to input query.<br>
 Precision: how many of the 10 returned output, is related to input query.
