@@ -2,23 +2,23 @@
 
 | Symptom Query | Related of top k | Precision |
 | :---        |    :----:   |          ---: |
-| Malaise | | |
-| Exhaustion | | |
-| Dizziness | | |
-| Cachexia | | |
-| Cardiovascular problem | | |
-| Pharyngeal dryness | | |
-| Twitching eye | | |
-| Buzzing in ear | | |
-| Menopausal symptom | | |
-| Pain in lumbar spine | | |
-| Mucus in eyes | | |
-| Cyanosis | | |
-| Weight problem | | |
-| Hyperextension | | |
-| Difficulty standing | | |
-| Hemiparesis | | |
-| Constant tinnitus | | |
+| Malaise | |100% |
+| Exhaustion | |100% |
+| Dizziness | |90% |
+| Cachexia | |100% |
+| Cardiovascular problem | |70%|
+| Pharyngeal dryness | |100% |
+| Twitching eye | |50% |
+| Buzzing in ear | |60% |
+| Menopausal symptom | |60% |
+| Pain in lumbar spine | |50% |
+| Mucus in eyes | |10% |
+| Cyanosis | |100% |
+| Weight problem | |20% |
+| Hyperextension | |90% |
+| Difficulty standing | |50% |
+| Hemiparesis | |70% |
+| Constant tinnitus | |100% |
 
 # Natural Language Text Search Result Evaluation
 
