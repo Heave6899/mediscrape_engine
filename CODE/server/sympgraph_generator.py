@@ -1,15 +1,27 @@
 import json
 import numpy as np
-import matplotlib.pyplot as plt
-from utils import Utils
-
 import csv
+
+stopwords = ["(finding)", "Signs and Symptoms", "Other symptoms", "Multiple symptoms", "Symptoms and Signs", ","]
+substrings_to_replace = [" (symptom)",  " - symptom", " - cause unknown"]
+
+def condition(symptom):
+    for x in stopwords:
+        if x.casefold() in symptom.casefold():
+            return False
+    return True
+
+def well_form(symptom):
+    for y in substrings_to_replace:
+        symptom = symptom.replace(y, "")
+    return symptom.lower().capitalize()
 
 def getPostWiseSymptoms():
     allpostSymptoms = {}
     allSymptoms = []
     postIndex = 1
     files = ['./merged_data.json']
+
     for file in files:
         with open(file) as f:
             data = json.load(f)
@@ -21,11 +33,12 @@ def getPostWiseSymptoms():
                         allpostSymptoms[postId] = {"index": postIndex, "symptomList": []}
                         postIndex += 1
                     for symptom in symptomList:
-                        if symptom not in allpostSymptoms[postId]["symptomList"]:
-                            allpostSymptoms[postId]["symptomList"].append(symptom)
-                        if symptom not in allSymptoms:
-                            allSymptoms.append(symptom)
-    
+                        if condition(symptom):
+                            symptom = well_form(symptom)
+                            if symptom not in allpostSymptoms[postId]["symptomList"]:
+                                allpostSymptoms[postId]["symptomList"].append(symptom)
+                            if symptom not in allSymptoms:
+                                allSymptoms.append(symptom)
     return allpostSymptoms, allSymptoms
 
 
@@ -61,7 +74,7 @@ def getSymgraphEdges(symptomGraph, allSymptoms):
             source = allSymptoms[row]
             dest = allSymptoms[col]
             weight = symptomGraphList[row][col]
-            if weight >= 1:
+            if weight > 1:
                 edgeList.append([source, dest, weight])
     return edgeList
 
