@@ -2,7 +2,7 @@ This is a search engine that has been optimized to search various blog posts lik
 
 Created by:
 Vansh Patel,
-Bhargav Saravia,
+Bhargav Sarvaria,
 Charles Kuo (Chia-Cheng Kuo),
 Akash Arasu
 
