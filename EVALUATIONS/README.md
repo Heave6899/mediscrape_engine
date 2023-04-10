@@ -24,10 +24,14 @@
 
 | Document Name | Related of top k | Precision |
 | :---        |    :----:   |          ---: |
-| 1.json | | |
-| 2.json | | |
-| 3.json | | |
-| 4.json | | |
-| 5.json | | |
-| 6.json | | |
-| 7.json | | |
+| 1.json |90% |100% |
+| 2.json |30% |30% |
+| 3.json |100% |100% | 
+| 4.json |80% |100% |
+| 5.json |80% |100% |
+| 6.json |80% |90% |
+| 7.json |40% |100% |
+
+(3.json only return 1 mayo clinic post)<br>
+Related of top k: how many of the 10 returned output, it's main topic is relevant to input query.<br>
+Precision: how many of the 10 returned output, is related to input query.
